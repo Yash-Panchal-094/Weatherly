@@ -5,6 +5,7 @@ import { getWeather } from "./api";
 function App() {
   const [city, setCity] = useState("London");
   const [data, setData] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const fetchData = async () => {
     const res = await getWeather(city);
@@ -12,8 +13,9 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? 'dark' : ''}`}>
       <h1>Weatherly 🌤️</h1>
+      <button onClick={() => setDarkMode(!darkMode)}>Toggle Dark Mode </button>
       <input
         type="text"
         placeholder="Enter city"
@@ -27,3 +29,4 @@ function App() {
 }
 
 export default App;
+

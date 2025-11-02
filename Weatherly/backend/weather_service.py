@@ -14,4 +14,7 @@ def get_weather_data(city):
         city_data["temp_f"] = celsius_to_fahrenheit(city_data["temp_c"])
         return city_data
     except Exception as e:
-        return {"error": str(e)}
+        import traceback
+        print("Error fetching weather:", traceback.format_exc())
+        return {"error": "Internal server error. Please try again later."}
+
